@@ -21,7 +21,7 @@ public class CreateAccountTests extends TestBase{
         driver.findElement(By.name("password")).sendKeys("Altyn1234!");
         //click on Registration button
         driver.findElement(By.name("registration")).click();
-        //assert Sign Out button is present
+        //assert Sign Out button is present.
         Assert.assertTrue(isElementPresent(By.cssSelector("button")));
 
     }

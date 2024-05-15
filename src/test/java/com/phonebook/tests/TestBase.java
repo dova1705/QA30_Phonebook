@@ -17,8 +17,8 @@ public class TestBase {
 
         driver.get("https://telranedu.web.app/login");
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize(); //на весь экран
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); //время ожидание
     }
 
     @AfterMethod(enabled = false)
