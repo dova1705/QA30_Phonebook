@@ -8,22 +8,17 @@ public class CreateAccountTests extends TestBase{
 
 
     @Test
-    public void createNewAccountPositiveTest(){
+    public void registerExistedUserNegativeTest(){
         //click on Login link
-        driver.findElement(By.cssSelector("[href='/login']")).click();
+        click(By.cssSelector("[href='/login']"));
         //enter email
-        driver.findElement(By.name("email")).click();
-        driver.findElement(By.name("email")).clear();
-        driver.findElement(By.name("email")).sendKeys("altyn@gm.com");
+        type(By.name("email"), "altyn@gm.com");
         //enter password
-        driver.findElement(By.name("password")).click();
-        driver.findElement(By.name("password")).clear();
-        driver.findElement(By.name("password")).sendKeys("Altyn1234!");
+        type(By.name("password"), "Altyn1234!");
         //click on Registration button
-        driver.findElement(By.name("registration")).click();
-        //assert Sign Out button is present.
-        Assert.assertTrue(isElementPresent(By.cssSelector("button")));
-
+        click(By.name("registration"));
+        //assert Alert is appeared.
+        Assert.assertTrue(isAlertPresent());
     }
 
 }
