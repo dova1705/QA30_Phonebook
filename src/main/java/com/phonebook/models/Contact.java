@@ -1,6 +1,7 @@
 package com.phonebook.models;
 
 public class Contact {
+    //поля
     private  String name;
     private  String lastname;
     private  String phone;

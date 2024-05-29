@@ -38,7 +38,7 @@ public class BaseHelper {
         if (alert == null) {
             return false;
         } else {
-            alert.accept(); // нажимает на ОК во всплывающем окне
+            alert.accept(); // нажимает на ОК во всплывающем окне.
             return true;
         }
     }
