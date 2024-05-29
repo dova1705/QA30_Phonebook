@@ -1,24 +1,24 @@
 package com.phonebook.tests;
 
-import org.openqa.selenium.By;
+import com.phonebook.models.User;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CreateAccountTests extends TestBase{
 
-
-    @Test
-    public void registerExistedUserNegativeTest(){
-        //click on Login link
-        click(By.cssSelector("[href='/login']"));
-        //enter email
-        type(By.name("email"), "altyn@gm.com");
-        //enter password
-        type(By.name("password"), "Altyn1234!");
-        //click on Registration button
-        click(By.name("registration"));
-        //assert Alert is appeared.
-        Assert.assertTrue(isAlertPresent());
+    @BeforeMethod
+    public void ensurePrecondition(){
+        if (!app.getUser().isLoginLinkPresent()){ // существует логин линк? если да ничего не делай
+            app.getUser().clickOnSignOutButton(); // если нет кликай на clickOnSignOutButton()
+        }
     }
 
+    @Test
+    public void registerExistedUserNegativeTest(){ // регистрация существующего пользователя (негативный тест)
+        app.getUser().clickOnLoginLink();
+        app.getUser().fillLoginRegisterForm(new User().setEmail("altyn@gm.com").setPassword("Altyn1234!"));
+        app.getUser().clickOnRegistrationButton();
+        Assert.assertTrue(app.getUser().isAlertPresent()); // проверь алерт, появляется тут можно написать любой getter
+    }
 }
